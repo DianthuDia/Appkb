@@ -1,5 +1,5 @@
 #pragma once
-// configure ƒtƒ@ƒCƒ‹
+// configure ãƒ•ã‚¡ã‚¤ãƒ«
 
 #ifdef NDEBUG
 	#define NO_CRT

@@ -1,11 +1,11 @@
 #pragma once
-// ƒfƒXƒgƒ‰ƒNƒ^‚ðCRT‚ðŽg—p‚µ‚È‚¢‚ÅŽg—p‚Å‚«‚é‚æ‚¤‚É‚·‚é
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’CRTã‚’ä½¿ç”¨ã—ãªã„ã§ä½¿ç”¨ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 
 #ifdef NO_CRT
 
 typedef void (__cdecl* vfuncv)(void);
 
-// VC‚Å‚Í‚±‚ê‚ç‚ÌƒZƒOƒƒ“ƒg‚É‰Šú‰»ˆ—‚ðs‚¤ŠÖ”‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ðŠi”[‚·‚é
+// VCã§ã¯ã“ã‚Œã‚‰ã®ã‚»ã‚°ãƒ¡ãƒ³ãƒˆã«åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†é–¢æ•°ã¸ã®ãƒã‚¤ãƒ³ã‚¿ã‚’æ ¼ç´ã™ã‚‹
 extern "C"{
 #pragma data_seg(".CRT$XIA")
 	static vfuncv __xi_a[] = {NULL}; 
@@ -18,7 +18,7 @@ extern "C"{
 #pragma data_seg()
 }
 
-// VC‚ÅŽ©“®¶¬‚³‚ê‚½‰Šú‰»ˆ—‚ðs‚¤ŠÖ”“à‚Å‚ÍI—¹ˆ—‚ðatexit‚ðŒÄ‚ñ‚Å“o˜^‚µ‚Ä‚¢‚é
+// VCã§è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸåˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†é–¢æ•°å†…ã§ã¯çµ‚äº†å‡¦ç†ã‚’atexitã‚’å‘¼ã‚“ã§ç™»éŒ²ã—ã¦ã„ã‚‹
 #define EXITFUNCS_BOUNDARY 8
 static vfuncv* __exit_a = NULL;
 static vfuncv* __exit_z = NULL;

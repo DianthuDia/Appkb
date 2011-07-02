@@ -38,7 +38,7 @@ LRESULT CALLBACK MainProc(IN HWND hWnd, IN UINT msg, IN WPARAM wp, IN LPARAM lp)
 			::PostQuitMessage(0);
 			return TRUE;
 		default:
-			if(msg == uTaskbarRestart)	// �^�X�N�o�[�̍쐬�ʒm
+			if(msg == uTaskbarRestart)	// タスクバーの作成通知
 			{
 				DelTaskbar(&nid);
 				AddTaskbar(hWnd, &nid);
@@ -49,28 +49,28 @@ LRESULT CALLBACK MainProc(IN HWND hWnd, IN UINT msg, IN WPARAM wp, IN LPARAM lp)
 	return FALSE;
 }
 
-// �^�N�X�o�[�ɓo�^
+// タクスバーに登録
 VOID AddTaskbar(IN HWND hWnd, OUT PNOTIFYICONDATA lpNid)
 {
-	lpNid->cbSize = sizeof(NOTIFYICONDATA);							//�T�C�Y
+	lpNid->cbSize = sizeof(NOTIFYICONDATA);							//サイズ
 	lpNid->hWnd = hWnd;
-	lpNid->uID = IDR_TASKBAR;										//����ID
-	lpNid->uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;				//�w�荀��
-	lpNid->uCallbackMessage = WM_TASKBAR;							//�Ԃ��E�B���h�Emsg
-	lpNid->hIcon = ::LoadIcon(::GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAIN));		//�A�C�R��
-	::lstrcpy(lpNid->szTip,PROGRAM_NAME);							//�c�[���q���g
+	lpNid->uID = IDR_TASKBAR;										//識別ID
+	lpNid->uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;				//指定項目
+	lpNid->uCallbackMessage = WM_TASKBAR;							//返すウィンドウmsg
+	lpNid->hIcon = ::LoadIcon(::GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAIN));		//アイコン
+	::lstrcpy(lpNid->szTip,PROGRAM_NAME);							//ツールヒント
 
-	while (! ::Shell_NotifyIcon(NIM_ADD, lpNid)) {::Sleep(1000);}	//�^�N�X�o�[�ɓo�^���܂��B
+	while (! ::Shell_NotifyIcon(NIM_ADD, lpNid)) {::Sleep(1000);}	//タクスバーに登録します。
 }
 
-// �^�N�X�o�[����폜
+// タクスバーから削除
 VOID DelTaskbar(IN PNOTIFYICONDATA lpNid)
 {
 	::Shell_NotifyIcon(NIM_DELETE, lpNid);
 	lpNid = NULL;
 }
 
-// �^�N�X�o�[ ���j���[�����
+// タクスバー メニューを作る
 VOID ShowTaskbarMenu(IN HWND hWnd)
 {
 	POINT pt;

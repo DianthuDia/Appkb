@@ -1,12 +1,12 @@
 #pragma once
-// ���Ŏw�肳�ꂽ��`�̑O�ɑΏۃv���b�g�t�H�[�����w�肵�Ȃ���΂Ȃ�Ȃ��ꍇ�A�ȉ��̒�`��ύX���Ă��������B
-// �قȂ�v���b�g�t�H�[���ɑΉ�����l�Ɋւ���ŐV���ɂ��ẮAMSDN ���Q�Ƃ��Ă��������B
-#define _WIN32_IE			0x0200	// 95,NT �ł̃f�t�HIE
+// 下で指定された定義の前に対象プラットフォームを指定しなければならない場合、以下の定義を変更してください。
+// 異なるプラットフォームに対応する値に関する最新情報については、MSDN を参照してください。
+#define _WIN32_IE			0x0200	// 95,NT でのデフォIE
 
 #ifdef _UNICODE
 	#define WINVER			0x0400
-	#define _WIN32_WINNT	0x0400	// NT����
+	#define _WIN32_WINNT	0x0400	// NTから
 #else //!_UNICODE
 	#define WINVER			0x0400
-	#define _WIN32_WINDOWS	0x0400	// 95����
+	#define _WIN32_WINDOWS	0x0400	// 95から
 #endif	// !_UNICODE

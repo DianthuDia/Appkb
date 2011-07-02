@@ -19,39 +19,39 @@ bool _CHOOK_CLASS_NAME::Begin(const IN HWND hWndRecv, const IN INT idHook)
 VOID _CHOOK_CLASS_NAME::End() { ::UnhookWindowsHookEx( m_hHook ); }
 LRESULT CALLBACK _CHOOK_CLASS_NAME::HookProc(IN const INT nCode,IN const WPARAM wp, IN const LPARAM lp)
 {
-	if( nCode < 0 || nCode == HC_NOREMOVE )		// ÉtÉbÉNÇµÇƒÇÊÇ¢Ç©É`ÉFÉbÉNÇ∑ÇÈ
+	if( nCode < 0 || nCode == HC_NOREMOVE )		// „Éï„ÉÉ„ÇØ„Åó„Å¶„Çà„ÅÑ„Åã„ÉÅ„Çß„ÉÉ„ÇØ„Åô„Çã
 		return ::CallNextHookEx( m_hHook, nCode, wp, lp );
 
 	if(OnHook(wp, lp))
 		return TRUE;
 
-	// èàóùÇµÇƒÇ‡MSGÇè¡Ç≥Ç»Ç¢èÍçá
+	// Âá¶ÁêÜ„Åó„Å¶„ÇÇMSG„ÇíÊ∂à„Åï„Å™„ÅÑÂ†¥Âêà
 	return ::CallNextHookEx( m_hHook, nCode, wp, lp );
 }
 #undef _CHOOK_CLASS_NAME
 #endif
 
-// ÉtÉbÉNéûÇÃèàóù(Ç±Ç±Ç…å≈óLèàóùÇÇ©Ç≠)
-// (return trueÇ≈ì¸óÕÇíDÇ¢éÊÇÈ)
+// „Éï„ÉÉ„ÇØÊôÇ„ÅÆÂá¶ÁêÜ(„Åì„Åì„Å´Âõ∫ÊúâÂá¶ÁêÜ„Çí„Åã„Åè)
+// (return true„ÅßÂÖ•Âäõ„ÇíÂ•™„ÅÑÂèñ„Çã)
 bool CKeyHook::OnHook(IN const WPARAM /*wp*/, IN const LPARAM lp)
 {
-	const static DWORD IME_OFF_SCANCODE	= 113; // âpêî
-	const static DWORD IME_ON_SCANCODE	= 114; // Ç©Ç»
+	const static DWORD IME_OFF_SCANCODE	= 113; // Ëã±Êï∞
+	const static DWORD IME_ON_SCANCODE	= 114; // „Åã„Å™
 	
-	// åªç›ÇÃForegroundWindowÇ©ÇÁIMEÉnÉìÉhÉãéÊìæ
+	// ÁèæÂú®„ÅÆForegroundWindow„Åã„ÇâIME„Éè„É≥„Éâ„É´ÂèñÂæó
 	const DWORD threadId = ::GetWindowThreadProcessId(::GetForegroundWindow(), NULL);
 	::AttachThreadInput(::GetCurrentThreadId(), threadId, TRUE);
 	const HWND hWndIME = ::ImmGetDefaultIMEWnd( ::GetFocus() );
 	::AttachThreadInput(::GetCurrentThreadId(), threadId, FALSE);
 	
-	// äYìñÉLÅ[ÇÃÉ`ÉFÉbÉN
+	// Ë©≤ÂΩì„Ç≠„Éº„ÅÆ„ÉÅ„Çß„ÉÉ„ÇØ
 	const DWORD scanCode = ((LPKBDLLHOOKSTRUCT)lp)->scanCode;
 	if(scanCode == IME_OFF_SCANCODE)
 		::SendMessage(hWndIME, WM_IME_CONTROL, IMC_SETOPENSTATUS, FALSE);
 	else if(scanCode == IME_ON_SCANCODE)
 		::SendMessage(hWndIME, WM_IME_CONTROL, IMC_SETOPENSTATUS, TRUE);
 	else
-		return false;	// äYìñÇµÇ»Ç¢ÇÃÇ≈ÅAÉtÉbÉNÇµÇ»Ç¢
+		return false;	// Ë©≤ÂΩì„Åó„Å™„ÅÑ„ÅÆ„Åß„ÄÅ„Éï„ÉÉ„ÇØ„Åó„Å™„ÅÑ
 
-	return true;	// íDÇ¢éÊÇÈ
+	return true;	// Â•™„ÅÑÂèñ„Çã
 }

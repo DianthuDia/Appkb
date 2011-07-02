@@ -10,25 +10,25 @@
 #endif //!_DEBUG
 {
 #ifdef _DEBUG
-//	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_WNDW);	//ƒfƒoƒbƒN•¶š—ñ‚Å‚Í‚È‚­Window‚Å•\¦
-//	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_WNDW);	//ƒfƒoƒbƒN•¶š—ñ‚Å‚Í‚È‚­Window‚Å•\¦
-//	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_WNDW);	//ƒfƒoƒbƒN•¶š—ñ‚Å‚Í‚È‚­Window‚Å•\¦
+//	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_WNDW);	//ãƒ‡ãƒãƒƒã‚¯æ–‡å­—åˆ—ã§ã¯ãªãWindowã§è¡¨ç¤º
+//	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_WNDW);	//ãƒ‡ãƒãƒƒã‚¯æ–‡å­—åˆ—ã§ã¯ãªãWindowã§è¡¨ç¤º
+//	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_WNDW);	//ãƒ‡ãƒãƒƒã‚¯æ–‡å­—åˆ—ã§ã¯ãªãWindowã§è¡¨ç¤º
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);
 #else	// _DEBUG
-	_callfunclist(__xi_a, __xi_z);		// atexitg—p‚Ìˆ×
-	_callfunclist(__xc_a, __xc_z);		// atexitg—p‚Ìˆ×
+	_callfunclist(__xi_a, __xi_z);		// atexitä½¿ç”¨ã®ç‚º
+	_callfunclist(__xc_a, __xc_z);		// atexitä½¿ç”¨ã®ç‚º
 #endif	// _DEBUG
 
-	//---------------------‘½d‹N“®–h~ˆ—-------------------------------
+	//---------------------å¤šé‡èµ·å‹•é˜²æ­¢å‡¦ç†-------------------------------
 	HANDLE hMSP = ::CreateMutex(NULL, TRUE, PROGRAM_NAME);
-	/* ‚·‚Å‚É‹N“®‚µ‚Ä‚¢‚é‚©”»’è */
-	if(::GetLastError() == ERROR_ALREADY_EXISTS)	// ‚·‚Å‚É‹N“®‚µ‚Ä‚¢‚é
+	/* ã™ã§ã«èµ·å‹•ã—ã¦ã„ã‚‹ã‹åˆ¤å®š */
+	if(::GetLastError() == ERROR_ALREADY_EXISTS)	// ã™ã§ã«èµ·å‹•ã—ã¦ã„ã‚‹
 	{
 		::ReleaseMutex(hMSP);
 		::CloseHandle(hMSP);
 
 		#ifdef _DEBUG
-			return static_cast<INT>(-1);	// ‚±‚ê‚ª–³‚¢‚Æ‚«‚¿‚ñ‚ÆƒfƒXƒgƒ‰ƒNƒ^ŒÄ‚×‚È‚¢
+			return static_cast<INT>(-1);	// ã“ã‚ŒãŒç„¡ã„ã¨ãã¡ã‚“ã¨ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å‘¼ã¹ãªã„
 		#else
 			::ExitProcess(static_cast<UINT>(-1));	// 
 		#endif //!_DEBUG
@@ -40,29 +40,29 @@
 	WNDCLASS MainWC;
 
 	MainWC.style = CS_HREDRAW | CS_VREDRAW/*| CS_DBLCLKS*/;
-	MainWC.lpfnWndProc = MainProc;			//ƒvƒƒV[ƒWƒƒ–¼
+	MainWC.lpfnWndProc = MainProc;			//ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£å
 	MainWC.cbClsExtra = 0;
 	MainWC.cbWndExtra = 0;
-	MainWC.hInstance = ::GetModuleHandle(NULL);	//ƒCƒ“ƒXƒ^ƒ“ƒX
+	MainWC.hInstance = ::GetModuleHandle(NULL);	//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	MainWC.hIcon = ::LoadIcon(MainWC.hInstance,MAKEINTRESOURCE(IDI_MAIN));
 	MainWC.hCursor = ::LoadCursor(NULL, IDC_ARROW);
 	MainWC.hbrBackground = reinterpret_cast<HBRUSH>(COLOR_DESKTOP+1);
-	MainWC.lpszMenuName = NULL;					//ƒƒjƒ…[–¼
+	MainWC.lpszMenuName = NULL;					//ãƒ¡ãƒ‹ãƒ¥ãƒ¼å
 	MainWC.lpszClassName = PROGRAM_NAME;
 
 	::RegisterClass(&MainWC);
 
 	::CreateWindow(
 		MainWC.lpszClassName,
-		MainWC.lpszClassName,	//ƒ^ƒCƒgƒ‹ƒo[‚É‚±‚Ì–¼‘O‚ª•\¦‚³‚ê‚Ü‚·
-		WS_DISABLED,	//ƒEƒBƒ“ƒhƒE‚Ìí—Ş
-		CW_USEDEFAULT,			//XÀ•W
-		CW_USEDEFAULT,			//YÀ•W
-		CW_USEDEFAULT,			//•
-		CW_USEDEFAULT,			//‚‚³
-		NULL,					//eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹Ae‚ğì‚é‚Æ‚«‚ÍNULL
-		NULL,					//ƒƒjƒ…[ƒnƒ“ƒhƒ‹AƒNƒ‰ƒXƒƒjƒ…[‚ğg‚¤‚Æ‚«‚ÍNULL
-		MainWC.hInstance,		//ƒCƒ“ƒXƒ^ƒ“ƒXƒnƒ“ƒhƒ‹
+		MainWC.lpszClassName,	//ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã«ã“ã®åå‰ãŒè¡¨ç¤ºã•ã‚Œã¾ã™
+		WS_DISABLED,	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ç¨®é¡
+		CW_USEDEFAULT,			//Xåº§æ¨™
+		CW_USEDEFAULT,			//Yåº§æ¨™
+		CW_USEDEFAULT,			//å¹…
+		CW_USEDEFAULT,			//é«˜ã•
+		NULL,					//è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€è¦ªã‚’ä½œã‚‹ã¨ãã¯NULL
+		NULL,					//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ³ãƒ‰ãƒ«ã€ã‚¯ãƒ©ã‚¹ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’ä½¿ã†ã¨ãã¯NULL
+		MainWC.hInstance,		//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒãƒ³ãƒ‰ãƒ«
 		NULL);
 
 	MSG msg;
@@ -76,19 +76,19 @@
 //		}
 	}
 	
-	///---------------------‘½d‹N“®–h~ˆ—-------------------------------
+	///---------------------å¤šé‡èµ·å‹•é˜²æ­¢å‡¦ç†-------------------------------
 	::ReleaseMutex(hMSP);
 	::CloseHandle(hMSP);
 	//---------------------------------------------------------------------
 
 	::UnregisterClass(MainWC.lpszClassName, MainWC.hInstance);
 #ifdef _DEBUG
-	return static_cast<INT>(msg.wParam);	// ‚±‚ê‚ª–³‚¢‚Æ‚«‚¿‚ñ‚ÆƒfƒXƒgƒ‰ƒNƒ^ŒÄ‚×‚È‚¢
+	return static_cast<INT>(msg.wParam);	// ã“ã‚ŒãŒç„¡ã„ã¨ãã¡ã‚“ã¨ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å‘¼ã¹ãªã„
 #else
-	_callfunclist(__exit_a, __exit_z);				// atexitg—p‚Ìˆ×
-	::HeapFree(::GetProcessHeap(),0,__exit_a);		// atexitg—p‚Ìˆ×
+	_callfunclist(__exit_a, __exit_z);				// atexitä½¿ç”¨ã®ç‚º
+	::HeapFree(::GetProcessHeap(),0,__exit_a);		// atexitä½¿ç”¨ã®ç‚º
 
-	::ExitProcess(static_cast<INT>(msg.wParam));	// ‚±‚ÌŠÖ”‚Í‚©‚È‚èŠëŒ¯
+	::ExitProcess(static_cast<INT>(msg.wParam));	// ã“ã®é–¢æ•°ã¯ã‹ãªã‚Šå±é™º
 #endif //!_DEBUG
 }
 

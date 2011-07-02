@@ -1,9 +1,9 @@
 #pragma once
 
 #if _MSC_VER >= 1400
-	#define _CRT_DISABLE_PERFCRIT_LOCKS		// MTƒ‰ƒCƒuƒ‰ƒŠ‚Å‚ÌƒVƒ“ƒOƒ‹ƒXƒŒƒbƒhˆ—‚Ì‚‘¬‰»
+	#define _CRT_DISABLE_PERFCRIT_LOCKS		// MTãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã®ã‚·ãƒ³ã‚°ãƒ«ã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†ã®é«˜é€ŸåŒ–
 	#pragma warning(disable:4996)
-	// XP ƒrƒWƒ…ƒAƒ‹ ƒXƒ^ƒCƒ‹‚Ìg—p
+	// XP ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ« ã‚¹ã‚¿ã‚¤ãƒ«ã®ä½¿ç”¨
 	#if defined _M_IX86
 		#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
 		#elif defined _M_IA64

@@ -1,22 +1,22 @@
 #pragma once
 /*
-[ƒvƒŠƒtƒBƒbƒNƒX]	[ƒŠƒ\[ƒX‚ÌŽí—Þ]						[—LŒø”ÍˆÍ]
-IDR_				‘½dƒŠƒ\[ƒX							1 ` 0x6FFF
-IDD_				ƒ_ƒCƒAƒƒO ƒeƒ“ƒvƒŒ[ƒg				1 ` 0x6FFF
+[ãƒ—ãƒªãƒ•ã‚£ãƒƒã‚¯ã‚¹]	[ãƒªã‚½ãƒ¼ã‚¹ã®ç¨®é¡ž]						[æœ‰åŠ¹ç¯„å›²]
+IDR_				å¤šé‡ãƒªã‚½ãƒ¼ã‚¹							1 ï½ž 0x6FFF
+IDD_				ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ				1 ï½ž 0x6FFF
  
-IDC_AIDI_AIDB_	ƒJ[ƒ\ƒ‹AƒAƒCƒRƒ“Aƒrƒbƒgƒ}ƒbƒv	1 ` 0x6FFF
-IDS_AIDP_			•¶Žš—ñ									1 ` 0x7FFF
+IDC_ã€IDI_ã€IDB_	ã‚«ãƒ¼ã‚½ãƒ«ã€ã‚¢ã‚¤ã‚³ãƒ³ã€ãƒ“ãƒƒãƒˆãƒžãƒƒãƒ—	1 ï½ž 0x6FFF
+IDS_ã€IDP_			æ–‡å­—åˆ—									1 ï½ž 0x7FFF
  
-ID_					ƒRƒ}ƒ“ƒh								0x8000 ` 0xDFFF
+ID_					ã‚³ãƒžãƒ³ãƒ‰								0x8000 ï½ž 0xDFFF
  
-IDC_				ƒRƒ“ƒgƒ[ƒ‹							8 ` 0xDFFF
+IDC_				ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«							8 ï½ž 0xDFFF
 */
 
 
 
 #define PROGRAM_NAME	TEXT("AppKb")
 
-// ‘½dƒŠƒ\[ƒXŽ¯•Ê
+// å¤šé‡ãƒªã‚½ãƒ¼ã‚¹è­˜åˆ¥
 #define IDR_TASKBAR			1
 //#define IDR_MENU_MAIN					100
 //#define IDR_TRACKMENU_DRAW				101
@@ -28,20 +28,20 @@ IDC_				ƒRƒ“ƒgƒ[ƒ‹							8 ` 0xDFFF
 //#define IDR_TOOLBAR_DRAW_COMMON				200
 //#define IDR_TOOLBAR_EVENT_LIST				201
 
-// ƒ_ƒCƒAƒƒO ƒeƒ“ƒvƒŒ[ƒg
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
 #define IDD_MAIN		1
 
-// ƒJ[ƒ\ƒ‹AƒAƒCƒRƒ“Aƒrƒbƒgƒ}ƒbƒv
+// ã‚«ãƒ¼ã‚½ãƒ«ã€ã‚¢ã‚¤ã‚³ãƒ³ã€ãƒ“ãƒƒãƒˆãƒžãƒƒãƒ—
 #define IDI_MAIN				1
 #define IDI_SMALL				2
 
-// •¶Žš—ñ
+// æ–‡å­—åˆ—
 //#define IDS_WIZARD_WATERFALL				1
 //#define IDS_WIZARD_SPIRAL					2
 //#define IDS_TREE_EVENT_LIST					3
 
-// ƒRƒ“ƒgƒ[ƒ‹(ƒ_ƒCƒ„ƒƒO‚Ì)
-// ‹¤’Ê
+// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«(ãƒ€ã‚¤ãƒ¤ãƒ­ã‚°ã®)
+// å…±é€š
 #define IDC_STATIC -1
 
 #define IDC_COMBO_NIC			1
@@ -50,12 +50,12 @@ IDC_				ƒRƒ“ƒgƒ[ƒ‹							8 ` 0xDFFF
 #define IDC_EDIT_CYCLE			4
 #define IDC_BUTTON_APPLY		5
 
-// ƒc[ƒ‹ƒo[‚Ìƒ{ƒ^ƒ“
+// ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã®ãƒœã‚¿ãƒ³
 //#define IDC_BUTTON_TOOLBAR_START			100
 //#define IDC_BUTTON_EL_ADD					101
 //#define IDC_BUTTON_EL_DELETE				102
 
-// ƒƒjƒ…[ID								
+// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ID								
 #define IDM_END						0x8000
 //#define IDM_FILE_LOAD				0x8001
 //#define IDM_FILE_SAVE				0x8002

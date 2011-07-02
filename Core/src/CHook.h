@@ -4,9 +4,9 @@
 #include "Resource.h"
 
 #if 1 // CKeyHook
-#define _CHOOK_CLASS_NAME CKeyHook		// •Ï”1 ƒNƒ‰ƒX–¼
-#define _CHOOK_HOOK_ID WH_KEYBOARD_LL		// •Ï”2 ƒtƒbƒNID
-#define HOOKED_SCANCODE WM_USER+1				// ƒtƒbƒNŽž‚ÌWM_SETTEXT#WPARAM
+#define _CHOOK_CLASS_NAME CKeyHook		// å¤‰æ•°1 ã‚¯ãƒ©ã‚¹å
+#define _CHOOK_HOOK_ID WH_KEYBOARD_LL		// å¤‰æ•°2 ãƒ•ãƒƒã‚¯ID
+#define HOOKED_SCANCODE WM_USER+1				// ãƒ•ãƒƒã‚¯æ™‚ã®WM_SETTEXT#WPARAM
 class _CHOOK_CLASS_NAME
 {
 public:

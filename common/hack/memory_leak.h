@@ -1,9 +1,9 @@
 #pragma once
-// ƒƒ‚ƒŠƒŠ[ƒNŒŸo
+// ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯æ¤œå‡º
 
 #ifdef _DEBUG
 	#define _CRTDBG_MAP_ALLOC
-	#include <cstdlib>	// •K—v
+	#include <cstdlib>	// å¿…è¦
 	#include <crtdbg.h>
 	#define _CRTDBG_MAP_ALLOC
 	#define new ::new(_NORMAL_BLOCK, __FILE__, __LINE__)

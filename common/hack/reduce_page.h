@@ -1,5 +1,5 @@
 #pragma once
-// 1ƒy[ƒWß–ñ
+// 1ãƒšãƒ¼ã‚¸ç¯€ç´„
 
 #ifndef _DEBUG
 	#pragma comment(linker, "/merge:.data=.text")
