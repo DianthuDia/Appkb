@@ -1,18 +1,26 @@
 #pragma once
 
+#include "../../common/typedef.h"
 #include "Resource.h"
-#include "init/typedef.h"
 
-// ※1exeに1フックのみ
-class CHook
+#if 1 // CKeyHook
+#define _CHOOK_CLASS_NAME CKeyHook		// 変数1 クラス名
+#define _CHOOK_HOOK_ID WH_KEYBOARD_LL		// 変数2 フックID
+#define HOOKED_SCANCODE WM_USER+1				// フック時のWM_SETTEXT#WPARAM
+class _CHOOK_CLASS_NAME
 {
 public:
-	static bool Begin(const IN INT idHook, bool (*fpOnHook)(IN const WPARAM wp,IN const LPARAM lp));
+	static bool Begin(const IN HWND hWndRecv, const IN INT idHook = _CHOOK_HOOK_ID);
 	static VOID End();
 private:
-	static INT m_idHook;	// フックモード
-	static HHOOK m_hHook;	// フックハンドル
-	static bool (*m_fpOnHook)(IN const WPARAM wp,IN const LPARAM lp);	// フック時の処理(return trueで入力を奪い取る)
+	_CHOOK_CLASS_NAME();
 
+	static HWND m_hWndRecv;
+	static HHOOK m_hHook;
+	
 	static LRESULT CALLBACK HookProc(IN const INT nCode, IN const WPARAM wp, IN const LPARAM lp);
+	static bool OnHook(IN const WPARAM wp, IN const LPARAM lp);
 };
+#undef _CHOOK_CLASS_NAME
+#undef _CHOOK_HOOK_ID
+#endif

@@ -9,12 +9,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル\init">
-      <UniqueIdentifier>{b1a54522-09df-4b68-9a8e-ee33adc8b437}</UniqueIdentifier>
-    </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\common">
+      <UniqueIdentifier>{1b4cfcdd-81be-4c70-95ce-e8db4e47ee8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -29,12 +29,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\init\config.h">
-      <Filter>ヘッダー ファイル\init</Filter>
-    </ClInclude>
-    <ClInclude Include="src\init\typedef.h">
-      <Filter>ヘッダー ファイル\init</Filter>
-    </ClInclude>
     <ClInclude Include="src\Resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -49,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="src\CHook.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\config.h">
+      <Filter>ヘッダー ファイル\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\typedef.h">
+      <Filter>ヘッダー ファイル\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

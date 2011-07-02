@@ -5,8 +5,8 @@
 
 #pragma once
 
-#include "../../common/manifest.h"
-#include "../../common/targetver.h"
+#include "../../common/hack/manifest.h"
+#include "../../common/hack/targetver.h"
 
 #define STRICT
 #define WIN32_LEAN_AND_MEAN             // Windows ヘッダーから使用されていない部分を除外します。
@@ -17,7 +17,7 @@
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください。
 
 
-#include "../../common/memory_leak.h"
-#include "../../common/reduce_page.h"
+#include "../../common/hack/memory_leak.h"
+#include "../../common/hack/reduce_page.h"
 
-#include "init/config.h"
+#include "../../common/config.h"

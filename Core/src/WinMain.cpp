@@ -5,7 +5,7 @@
 	#include <tchar.h>
 	INT WINAPI _tWinMain(IN const HINSTANCE, IN const HINSTANCE, IN LPTSTR const, IN const INT)
 #else
-	#include "../../common/atexit.h"
+	#include "../../common/hack/atexit.h"
 	void WINAPI WinMainCRTStartup()
 #endif //!_DEBUG
 {

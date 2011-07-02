@@ -1,31 +1,6 @@
 #include "stdafx.h"
 #include "MainProc.h"
 
-// フック時の処理(ここに固有処理をかく)
-bool OnHook(IN CONST WPARAM /*wp*/,IN CONST LPARAM lp)
-{
-	const static DWORD IME_OFF_SCANCODE	= 113; // 英数
-	const static DWORD IME_ON_SCANCODE	= 114; // かな
-	
-	// 現在のForegroundWindowからIMEハンドル取得
-	const DWORD threadId = ::GetWindowThreadProcessId(::GetForegroundWindow(), NULL);
-	::AttachThreadInput(::GetCurrentThreadId(), threadId, TRUE);
-	const HWND hWndIME = ::ImmGetDefaultIMEWnd( ::GetFocus() );
-	::AttachThreadInput(::GetCurrentThreadId(), threadId, FALSE);
-	
-	// 該当キーのチェック
-	const DWORD scanCode = ((LPKBDLLHOOKSTRUCT)lp)->scanCode;
-	if(scanCode == IME_OFF_SCANCODE)
-		::SendMessage(hWndIME, WM_IME_CONTROL, IMC_SETOPENSTATUS, FALSE);
-	else if(scanCode == IME_ON_SCANCODE)
-		::SendMessage(hWndIME, WM_IME_CONTROL, IMC_SETOPENSTATUS, TRUE);
-	else
-		return false;	// 該当しないので、フックしない
-
-	return true;	// 奪い取る
-}
-
-
 LRESULT CALLBACK MainProc(IN HWND hWnd, IN UINT msg, IN WPARAM wp, IN LPARAM lp)
 {
 	static NOTIFYICONDATA nid;
@@ -38,7 +13,7 @@ LRESULT CALLBACK MainProc(IN HWND hWnd, IN UINT msg, IN WPARAM wp, IN LPARAM lp)
 			::AddTaskbar(hWnd, &nid);
 			uTaskbarRestart = ::RegisterWindowMessage(TASKBAR_MSG);
 
-			CHook::Begin(WH_KEYBOARD_LL, OnHook );
+			CKeyHook::Begin(hWnd);
 			break;
 		case WM_TASKBAR:
 			if (wp != IDR_TASKBAR)
@@ -59,7 +34,7 @@ LRESULT CALLBACK MainProc(IN HWND hWnd, IN UINT msg, IN WPARAM wp, IN LPARAM lp)
 			break;
 		case WM_DESTROY:
 			::DelTaskbar(&nid);
-			CHook::End();
+			CKeyHook::End();
 			::PostQuitMessage(0);
 			return TRUE;
 		default:

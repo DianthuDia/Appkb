@@ -125,9 +125,9 @@
     <ClCompile Include="src\MainProc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\common\config.h" />
+    <ClInclude Include="..\common\typedef.h" />
     <ClInclude Include="src\CHook.h" />
-    <ClInclude Include="src\init\config.h" />
-    <ClInclude Include="src\init\typedef.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\WinMain.h" />

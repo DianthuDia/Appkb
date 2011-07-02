@@ -1,4 +1,4 @@
-#include "init/typedef.h"
+#include "../../common/typedef.h"
 #include "Resource.h"
 
 #include "CHook.h"
